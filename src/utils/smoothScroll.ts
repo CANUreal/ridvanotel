@@ -1,4 +1,4 @@
-const NAV_OFFSET = 88;
+const NAV_OFFSET = 96;
 
 export function smoothScrollToHash(hash: string) {
   const id = hash.startsWith("#") ? hash.slice(1) : hash;

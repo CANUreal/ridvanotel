@@ -93,7 +93,7 @@ export function ImageLightbox({ images, index, altForIndex, onClose, onChange }:
           alt={altForIndex(current + 1)}
           className="max-h-[82vh] w-auto max-w-full rounded-lg object-contain shadow-2xl"
         />
-        <figcaption className="mt-3 text-center text-sm text-white/70">
+        <figcaption className="mt-3 text-center text-sm font-medium text-white/90">
           {current + 1} / {total}
         </figcaption>
       </figure>

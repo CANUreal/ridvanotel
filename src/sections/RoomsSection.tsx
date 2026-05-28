@@ -35,7 +35,7 @@ export function RoomsSection() {
                 <div className="p-6 sm:p-8">
                   <div className="mb-3 flex items-start justify-between gap-4">
                     <span className="font-brand text-3xl text-theme-muted">{room.number}</span>
-                    <span className="text-xs font-bold uppercase tracking-widest text-theme-muted">
+                    <span className="text-xs font-bold uppercase tracking-widest text-theme-accent">
                       {room.category}
                     </span>
                   </div>
@@ -45,14 +45,14 @@ export function RoomsSection() {
                     {room.features.map((f) => (
                       <li
                         key={f}
-                        className="rounded-full border border-theme bg-theme-chip px-3 py-1 text-xs font-medium text-theme-body"
+                        className="rounded-full border border-theme bg-theme-chip px-3 py-1 text-xs font-semibold text-theme-strong"
                       >
                         {f}
                       </li>
                     ))}
                   </ul>
-                  <div className="mt-6 flex flex-wrap gap-3">
-                    <a href="#reservation" className="btn-dark inline-flex text-sm">
+                  <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+                    <a href="#reservation" className="btn-dark inline-flex w-full justify-center text-sm sm:w-auto">
                       {t.cta.primaryShort}
                       <ArrowRight className="h-4 w-4" />
                     </a>
@@ -60,7 +60,7 @@ export function RoomsSection() {
                       href={meta.detailUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 rounded-full border border-theme px-5 py-2.5 text-sm font-semibold text-theme-strong transition-colors hover:bg-theme-chip"
+                      className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-theme px-5 py-2.5 text-sm font-semibold text-theme-strong transition-colors hover:bg-theme-chip sm:w-auto"
                     >
                       {t.cta.roomDetail}
                       <ExternalLink className="h-4 w-4" />

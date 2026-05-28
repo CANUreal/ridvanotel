@@ -56,6 +56,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     document.documentElement.setAttribute("data-theme", theme);
     localStorage.setItem(THEME_KEY, theme);
+    requestAnimationFrame(() => ScrollTrigger.refresh());
   }, [theme]);
 
   useEffect(() => {

@@ -12,7 +12,7 @@ export function SectionHeading({ title, subtitle, className = "" }: Props) {
       </h2>
       <div className="section-rule" aria-hidden />
       {subtitle ? (
-        <p className="mx-auto mt-5 max-w-xl text-base text-theme-body sm:text-lg" data-animate="reveal">
+        <p className="mx-auto mt-5 max-w-xl text-base leading-relaxed text-theme-accent sm:text-lg" data-animate="reveal">
           {subtitle}
         </p>
       ) : null}

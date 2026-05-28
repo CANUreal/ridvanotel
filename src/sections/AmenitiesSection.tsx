@@ -19,7 +19,7 @@ export function AmenitiesSection() {
               data-animate="amenity"
               className="card-editorial flex flex-col gap-4 p-6 sm:flex-row sm:items-start sm:gap-8 sm:p-8"
             >
-              <span className="shrink-0 font-brand text-4xl text-theme-muted sm:text-5xl">
+              <span className="shrink-0 font-brand text-4xl text-theme-accent sm:text-5xl">
                 {service.number}
               </span>
               <div>

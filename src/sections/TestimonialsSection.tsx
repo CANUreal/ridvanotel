@@ -10,7 +10,7 @@ export function TestimonialsSection() {
       <div className="mx-auto max-w-7xl">
         <SectionHeading title={t.testimonials.title} />
 
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
+        <div className="grid grid-cols-1 gap-6 sm:gap-8 md:grid-cols-2 lg:grid-cols-3">
           {t.testimonials.items.map((item) => (
             <article
               key={item.name}

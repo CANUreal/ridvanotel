@@ -168,7 +168,7 @@ export function ReservationSection() {
           </button>
 
           {submitted && (
-            <p className="text-center text-sm text-theme-muted" role="status">
+            <p className="text-center text-sm text-theme-accent" role="status">
               {t.reservation.mailtoHint}
             </p>
           )}

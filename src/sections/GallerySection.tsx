@@ -25,7 +25,7 @@ function GalleryTile({
       type="button"
       {...(animate ? { "data-animate": "gallery-item" as const } : {})}
       onClick={onOpen}
-      className={`group relative shrink-0 overflow-hidden rounded-2xl text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--tone-accent)] ${className}`}
+      className={`gallery-tile group relative shrink-0 snap-center overflow-hidden rounded-2xl text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--tone-accent)] ${className}`}
       aria-label={openLabel}
     >
       <img
@@ -60,14 +60,19 @@ export function GallerySection() {
         <SectionHeading title={t.gallery.title} subtitle={t.gallery.subtitle} />
       </div>
 
-      {/* Mobil: grid */}
-      <div className="mx-auto grid max-w-6xl grid-cols-2 gap-2 sm:gap-3 md:hidden md:px-10">
+      <div
+        data-gallery-track
+        className="gallery-scroll mt-10 flex w-max snap-x snap-mandatory gap-3 overflow-x-auto overscroll-x-contain scroll-smooth px-4 pb-3 pt-1 max-md:touch-pan-x sm:gap-4 sm:px-6 md:gap-4 md:overflow-visible md:px-10 md:pb-4 md:snap-none md:pt-0"
+        aria-label={t.gallery.scrollHint}
+      >
         {GALLERY_IMAGES.map((src, i) => (
           <GalleryTile
-            key={`m-${src}`}
+            key={src}
             src={src}
             animate
-            className={i === 0 ? "col-span-2 aspect-[4/3]" : "aspect-square"}
+            className={`h-64 w-[min(82vw,300px)] sm:h-80 sm:w-[min(72vw,360px)] md:h-[min(72vh,520px)] ${
+              i === 0 ? "md:w-[min(85vw,720px)]" : "md:w-[min(42vw,380px)]"
+            }`}
             onOpen={() => setLightboxIndex(i)}
             alt={t.gallery.imageAlt(i + 1)}
             openLabel={t.gallery.openImage(i + 1)}
@@ -75,24 +80,7 @@ export function GallerySection() {
         ))}
       </div>
 
-      {/* Masaüstü: yatay scroll-driven */}
-      <div className="hidden md:block">
-        <div data-gallery-track className="flex w-max gap-4 px-10 pb-4">
-          {GALLERY_IMAGES.map((src, i) => (
-            <GalleryTile
-              key={`d-${src}`}
-              src={src}
-              className={`h-[min(72vh,520px)] ${
-                i === 0 ? "w-[min(85vw,720px)]" : "w-[min(42vw,380px)]"
-              }`}
-              onOpen={() => setLightboxIndex(i)}
-              alt={t.gallery.imageAlt(i + 1)}
-              openLabel={t.gallery.openImage(i + 1)}
-            />
-          ))}
-        </div>
-        <p className="mt-6 text-center text-xs text-theme-muted">{t.gallery.scrollHint}</p>
-      </div>
+      <p className="gallery-hint mt-4 px-4 text-center text-sm md:mt-6">{t.gallery.scrollHint}</p>
 
       <ImageLightbox
         images={GALLERY_IMAGES}

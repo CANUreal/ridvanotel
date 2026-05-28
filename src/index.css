@@ -45,55 +45,64 @@
 }
 
 [data-surface="light"] {
-  --tone-heading: #18181b;
-  --tone-accent: #52525b;
-  --tone-body: #52525b;
+  --tone-heading: #09090b;
+  --tone-accent: #3f3f46;
+  --tone-body: #3f3f46;
   --tone-strong: #09090b;
-  --tone-muted: #a1a1aa;
+  --tone-muted: #71717a;
   --tone-cta: #18181b;
 }
 
 [data-theme="dark"] [data-surface="light"] {
   --tone-heading: #fafafa;
-  --tone-accent: #a1a1aa;
-  --tone-body: #d4d4d8;
+  --tone-accent: #d4d4d8;
+  --tone-body: #e4e4e7;
   --tone-strong: #ffffff;
-  --tone-muted: #71717a;
+  --tone-muted: #a1a1aa;
   --tone-cta: #fafafa;
 }
 
 [data-surface="dark"] {
-  --tone-heading: #fafafa;
-  --tone-accent: #d4d4d8;
-  --tone-body: rgba(250, 250, 250, 0.88);
+  --tone-heading: #ffffff;
+  --tone-accent: #e4e4e7;
+  --tone-body: rgba(255, 255, 255, 0.92);
   --tone-strong: #ffffff;
-  --tone-muted: rgba(250, 250, 250, 0.55);
+  --tone-muted: rgba(255, 255, 255, 0.72);
   --tone-cta: #ffffff;
 }
 
 /* ── Navbar tonu (scroll / hero) ── */
 header[data-nav-tone="on-light"] {
   --nav-text: #18181b;
-  --nav-text-muted: rgba(24, 24, 27, 0.65);
+  --nav-text-muted: rgba(24, 24, 27, 0.78);
   --nav-glass: rgba(255, 255, 255, 0.78);
   --nav-btn-bg: #18181b;
   --nav-btn-fg: #ffffff;
 }
 
 header[data-nav-tone="on-dark"] {
-  --nav-text: #fafafa;
-  --nav-text-muted: rgba(250, 250, 250, 0.72);
+  --nav-text: #ffffff;
+  --nav-text-muted: rgba(255, 255, 255, 0.82);
   --nav-glass: rgba(9, 9, 11, 0.45);
   --nav-btn-bg: #ffffff;
   --nav-btn-fg: #18181b;
 }
 
 [data-theme="dark"] header[data-nav-tone="on-light"] {
-  --nav-glass: rgba(24, 24, 27, 0.82);
+  --nav-glass: rgba(24, 24, 27, 0.9);
   --nav-text: #fafafa;
-  --nav-text-muted: rgba(250, 250, 250, 0.65);
+  --nav-text-muted: rgba(250, 250, 250, 0.78);
   --nav-btn-bg: #fafafa;
   --nav-btn-fg: #18181b;
+}
+
+html {
+  color-scheme: light;
+  scroll-behavior: smooth;
+}
+
+html[data-theme="dark"] {
+  color-scheme: dark;
 }
 
 html,
@@ -108,6 +117,10 @@ body,
   transition:
     background-color 0.3s ease,
     color 0.3s ease;
+}
+
+body {
+  overflow-x: hidden;
 }
 
 .font-brand {
@@ -173,7 +186,18 @@ body,
 }
 
 .hero-scrim {
-  background-color: rgba(0, 0, 0, 0.5);
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.62) 0%,
+    rgba(0, 0, 0, 0.48) 45%,
+    rgba(0, 0, 0, 0.68) 100%
+  );
+}
+
+.hero-text-shadow {
+  text-shadow:
+    0 2px 20px rgba(0, 0, 0, 0.85),
+    0 1px 4px rgba(0, 0, 0, 0.9);
 }
 
 .section-rule {
@@ -252,8 +276,22 @@ body,
   transition: box-shadow 0.2s ease;
 }
 
+.input-theme::placeholder {
+  color: var(--tone-muted);
+  opacity: 1;
+}
+
 .input-theme:focus {
   box-shadow: 0 0 0 2px var(--focus-ring);
+}
+
+select.input-theme {
+  cursor: pointer;
+}
+
+select.input-theme option {
+  background-color: var(--input-bg);
+  color: var(--tone-strong);
 }
 
 .card-editorial {
@@ -322,7 +360,13 @@ header[data-nav-tone="on-dark"] .liquid-glass::before,
 }
 
 [id] {
-  scroll-margin-top: 5.5rem;
+  scroll-margin-top: 6rem;
+}
+
+@media (min-width: 768px) {
+  [id] {
+    scroll-margin-top: 5.5rem;
+  }
 }
 
 /* Navbar aktif link göstergesi */
@@ -371,17 +415,25 @@ header[data-nav-tone="on-dark"] .nav-pill-indicator {
   opacity: 0.72;
 }
 
-/* Türkçe nav etiketleri daha uzun — lg’de sığdır, xl’de normale dön */
+/* Türkçe nav etiketleri — tablet’te kompakt, xl’de normale dön */
 html[lang="tr"] .nav-pill-track {
-  padding-left: 0.25rem;
-  padding-right: 0.25rem;
+  padding-left: 0.125rem;
+  padding-right: 0.125rem;
 }
 
 html[lang="tr"] .nav-link {
-  padding-left: 0.375rem;
-  padding-right: 0.375rem;
-  font-size: 0.75rem;
-  line-height: 1.25rem;
+  padding-left: 0.3rem;
+  padding-right: 0.3rem;
+  font-size: 0.6875rem;
+  line-height: 1.2rem;
+}
+
+@media (min-width: 1024px) {
+  html[lang="tr"] .nav-link {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    font-size: 0.8125rem;
+  }
 }
 
 @media (min-width: 1280px) {
@@ -443,26 +495,40 @@ html[lang="tr"] .nav-link {
   pointer-events: none;
 }
 
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
+/* ── Galeri yatay kaydırma ── */
+.gallery-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: var(--tone-muted) transparent;
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-x;
+}
 
-  .nav-pill-indicator,
-  .lang-pill,
-  .locale-content,
-  .nav-link,
-  .lang-option {
-    transition: none !important;
+.gallery-hint {
+  color: var(--tone-muted);
+  font-weight: 500;
+}
+
+.gallery-scroll::-webkit-scrollbar {
+  height: 6px;
+}
+
+.gallery-scroll::-webkit-scrollbar-thumb {
+  border-radius: 9999px;
+  background: var(--tone-muted);
+}
+
+.gallery-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
   }
 
   .locale-content.is-switching {
     opacity: 1;
     transform: none;
+    transition: none;
   }
 }

@@ -1,12 +1,12 @@
-const IMG = "/images/ro";
+import { DENIZ, KALE } from "./gallery";
 
 export const ROOM_IMAGES = [
   {
-    image: `${IMG}/denizmanzaralı.jpg`,
+    image: DENIZ,
     detailUrl: "https://ridvanotel.com/index.php/odalarimiz",
   },
   {
-    image: `${IMG}/kalemanzaralı.jpg`,
+    image: KALE,
     detailUrl: "https://ridvanotel.com/index.php/odalarimiz",
   },
 ] as const;

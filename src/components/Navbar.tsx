@@ -62,7 +62,7 @@ function NavLink({
       ref={setRef}
       href={href}
       onClick={(e) => onNavigate(e, href)}
-      className={`nav-link whitespace-nowrap px-2.5 py-2 text-sm text-nav xl:px-3 ${isActive ? "is-active" : ""} ${className}`}
+      className={`nav-link whitespace-nowrap px-2 py-2 text-sm text-nav md:px-2.5 lg:px-3 ${isActive ? "is-active" : ""} ${className}`}
       aria-current={isActive ? "page" : undefined}
     >
       {label}
@@ -122,7 +122,7 @@ export function Navbar() {
         className="pointer-events-none fixed inset-x-0 top-0 z-50 px-4 pt-4 sm:px-6 md:px-10"
         data-nav-tone={navTone}
       >
-        <div className="pointer-events-auto mx-auto grid w-full max-w-6xl grid-cols-[auto_1fr_auto] items-center gap-3 sm:gap-4">
+        <div className="pointer-events-auto mx-auto grid w-full max-w-6xl grid-cols-[auto_1fr_auto] items-center gap-2 sm:gap-4">
           <div className="flex justify-start">
             <a
               href="#top"
@@ -137,7 +137,7 @@ export function Navbar() {
           <div className="flex min-w-0 justify-center overflow-hidden">
             <nav
               ref={navRef}
-              className="nav-pill-track liquid-glass relative hidden min-w-0 max-w-full items-center rounded-full px-1.5 py-1.5 lg:flex"
+              className="nav-pill-track liquid-glass relative hidden min-w-0 max-w-full items-center rounded-full px-1.5 py-1.5 md:flex"
               aria-label={t.a11y.mainNav}
             >
               <span
@@ -180,7 +180,7 @@ export function Navbar() {
               ref={menuButtonRef}
               type="button"
               onClick={() => setMenuOpen((o) => !o)}
-              className="liquid-glass relative flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-nav transition-all duration-300 active:scale-95 lg:hidden"
+              className="liquid-glass relative flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-nav transition-all duration-300 active:scale-95 md:hidden"
               aria-label={menuOpen ? t.a11y.closeMenu : t.a11y.openMenu}
               aria-expanded={menuOpen}
               aria-controls={menuPanelId}
@@ -203,7 +203,7 @@ export function Navbar() {
       </header>
 
       <div
-        className={`fixed inset-0 z-40 transition-opacity duration-300 lg:hidden ${
+        className={`fixed inset-0 z-[45] transition-opacity duration-300 md:hidden ${
           menuOpen ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0"
         }`}
         onClick={() => setMenuOpen(false)}
@@ -218,11 +218,12 @@ export function Navbar() {
         aria-modal="true"
         aria-label={t.a11y.mobileNav}
         aria-hidden={!menuOpen}
-        className={`fixed bottom-0 right-0 top-0 z-40 w-[85%] max-w-sm bg-theme-section shadow-2xl transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] lg:hidden ${
+        data-nav-tone="on-light"
+        className={`fixed bottom-0 right-0 top-0 z-[46] w-[min(88vw,20rem)] max-w-sm bg-theme-section shadow-2xl transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] md:hidden ${
           menuOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >
-        <div className="flex h-full flex-col px-8 pb-8 pt-24">
+        <div className="flex h-full flex-col px-6 pb-[max(2rem,env(safe-area-inset-bottom))] pt-[max(6rem,env(safe-area-inset-top,0px)+4rem)] sm:px-8">
           <div className="mb-6 flex items-center gap-2">
             <LangToggle locale={locale} setLocale={setLocale} />
             <ThemeToggle theme={theme} toggleTheme={toggleTheme} />

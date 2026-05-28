@@ -8,7 +8,7 @@ function prefersReducedMotion() {
   return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 }
 
-/** Scroll ile görünür olunca bir kez oynat; metinler varsayılan olarak görünür kalır */
+/** Scroll ile görünür olunca bir kez oynat */
 function reveal(
   targets: gsap.TweenTarget,
   vars: gsap.TweenVars,
@@ -17,11 +17,13 @@ function reveal(
 ) {
   return gsap.from(targets, {
     ...vars,
+    immediateRender: false,
     scrollTrigger: {
       trigger,
       start,
       toggleActions: "play none none none",
       once: true,
+      invalidateOnRefresh: true,
     },
   });
 }
@@ -33,7 +35,7 @@ export function useScrollAnimations() {
     const mm = gsap.matchMedia();
 
     const ctx = gsap.context(() => {
-      /* ── Hero: giriş (scroll yok) ── */
+      /* ── Hero: giriş ── */
       gsap.from(".hero-title-line", {
         autoAlpha: 0,
         y: 48,
@@ -68,7 +70,7 @@ export function useScrollAnimations() {
         delay: 0.6,
       });
 
-      /* ── Hero: hafif parallax (sadece transform, opacity dokunma) ── */
+      /* ── Hero: parallax (scroll-driven) ── */
       mm.add("(min-width: 0px)", () => {
         gsap.to(".hero-bg-wrap", {
           scrollTrigger: {
@@ -76,6 +78,7 @@ export function useScrollAnimations() {
             start: "top top",
             end: "bottom top",
             scrub: 1,
+            invalidateOnRefresh: true,
           },
           scale: 1.08,
           yPercent: 12,
@@ -88,6 +91,7 @@ export function useScrollAnimations() {
             start: "top top",
             end: "bottom top",
             scrub: 1,
+            invalidateOnRefresh: true,
           },
           y: 80,
           ease: "none",
@@ -141,17 +145,19 @@ export function useScrollAnimations() {
         );
       });
 
-      /* ── Galeri (mobil grid) ── */
-      gsap.utils.toArray<HTMLElement>("[data-animate='gallery-item']").forEach((el) => {
-        reveal(
-          el,
-          { autoAlpha: 0, scale: 0.94, y: 20, duration: 0.7, ease: "power2.out" },
-          el,
-          "top 92%"
-        );
+      /* ── Galeri: mobil — kart reveal ── */
+      mm.add("(max-width: 767px)", () => {
+        gsap.utils.toArray<HTMLElement>("[data-animate='gallery-item']").forEach((el) => {
+          reveal(
+            el,
+            { autoAlpha: 0, scale: 0.94, y: 20, duration: 0.7, ease: "power2.out" },
+            el,
+            "top 92%"
+          );
+        });
       });
 
-      /* ── Galeri yatay (masaüstü) ── */
+      /* ── Galeri: masaüstü — scroll-driven yatay ── */
       mm.add("(min-width: 768px)", () => {
         const track = document.querySelector<HTMLElement>("[data-gallery-track]");
         if (!track) return;
@@ -210,12 +216,22 @@ export function useScrollAnimations() {
     const refresh = () => ScrollTrigger.refresh();
     const raf = requestAnimationFrame(refresh);
     window.addEventListener("load", refresh);
-    const t = window.setTimeout(refresh, 600);
+    window.addEventListener("resize", refresh);
+    const t = window.setTimeout(refresh, 800);
+
+    const onImageLoad = () => refresh();
+    document.querySelectorAll<HTMLImageElement>("img").forEach((img) => {
+      if (!img.complete) img.addEventListener("load", onImageLoad, { once: true });
+    });
 
     return () => {
       cancelAnimationFrame(raf);
       window.removeEventListener("load", refresh);
+      window.removeEventListener("resize", refresh);
       window.clearTimeout(t);
+      document.querySelectorAll<HTMLImageElement>("img").forEach((img) => {
+        img.removeEventListener("load", onImageLoad);
+      });
       mm.revert();
       ctx.revert();
     };

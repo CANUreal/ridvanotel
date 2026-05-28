@@ -127,7 +127,7 @@ export const translations = {
       subtitle: "Rıdvan Otel'den kareler — büyütmek için fotoğrafa tıklayın",
       imageAlt: (n: number) => `Rıdvan Otel galeri fotoğrafı ${n}`,
       openImage: (n: number) => `Fotoğraf ${n} — büyüt`,
-      scrollHint: "Kaydırarak galeriyi gezin",
+      scrollHint: "Yana kaydırarak galeriyi gezin",
     },
     reservation: {
       title: "Rezervasyon",
@@ -304,7 +304,7 @@ export const translations = {
       subtitle: "Photos from Ridvan Hotel — click any image to enlarge",
       imageAlt: (n: number) => `Ridvan Hotel gallery photo ${n}`,
       openImage: (n: number) => `Photo ${n} — enlarge`,
-      scrollHint: "Scroll to browse the gallery",
+      scrollHint: "Swipe sideways to browse the gallery",
     },
     reservation: {
       title: "Reservation",
