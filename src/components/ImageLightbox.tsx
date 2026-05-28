@@ -45,7 +45,7 @@ export function ImageLightbox({ images, index, altForIndex, onClose, onChange }:
 
   return (
     <div
-      className="fixed inset-0 z-[60] flex items-center justify-center bg-black/92 p-4 backdrop-blur-sm"
+      className="fixed inset-0 z-[60] flex items-center justify-center bg-black/92 p-3 pt-[max(0.75rem,env(safe-area-inset-top))] pb-[max(0.75rem,env(safe-area-inset-bottom))] backdrop-blur-sm sm:p-4"
       role="dialog"
       aria-modal="true"
       aria-label={t.a11y.lightbox}
@@ -54,7 +54,7 @@ export function ImageLightbox({ images, index, altForIndex, onClose, onChange }:
       <button
         type="button"
         onClick={onClose}
-        className="absolute right-4 top-4 z-10 flex h-11 w-11 items-center justify-center rounded-full bg-white/10 text-white transition-colors hover:bg-white/20"
+        className="absolute right-3 top-[max(0.75rem,env(safe-area-inset-top))] z-10 flex h-11 w-11 items-center justify-center rounded-full bg-white/10 text-white transition-colors hover:bg-white/20 sm:right-4 sm:top-4"
         aria-label={t.a11y.lightboxClose}
       >
         <X className="h-6 w-6" />

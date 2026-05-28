@@ -6,7 +6,7 @@ export function TestimonialsSection() {
   const { t } = useApp();
 
   return (
-    <section id="reviews" data-surface="light" className="bg-theme-section-alt px-4 py-20 sm:px-6 md:py-28 lg:px-8">
+    <section id="reviews" data-surface="light" className="section-pad overflow-hidden bg-theme-section-alt py-16 sm:py-20 md:py-28">
       <div className="mx-auto max-w-7xl">
         <SectionHeading title={t.testimonials.title} />
 
@@ -15,7 +15,7 @@ export function TestimonialsSection() {
             <article
               key={item.name}
               data-animate="testimonial"
-              className="card-editorial flex flex-col justify-between p-8"
+              className="card-editorial flex min-w-0 flex-col justify-between p-5 sm:p-8"
             >
               <div>
                 <div className="mb-6 flex gap-0.5 text-amber-400" aria-hidden>

@@ -9,11 +9,11 @@ export function AboutSection() {
     <section
       id="about"
       data-surface="light"
-      className="bg-theme-section px-4 py-20 sm:px-6 md:py-28 lg:px-8"
+      className="section-pad overflow-hidden bg-theme-section py-16 sm:py-20 md:py-28"
     >
       <div className="mx-auto max-w-3xl text-center">
         <SectionHeading title={t.about.heading} />
-        <p data-animate="about-text" className="text-lg leading-relaxed text-theme-body">
+        <p data-animate="about-text" className="px-1 text-base leading-relaxed text-theme-body sm:px-0 sm:text-lg">
           {t.about.text}
         </p>
         <a

@@ -119,10 +119,10 @@ export function Navbar() {
   return (
     <>
       <header
-        className="pointer-events-none fixed inset-x-0 top-0 z-50 px-4 pt-4 sm:px-6 md:px-10"
+        className="pointer-events-none fixed inset-x-0 top-0 z-50 px-3 pt-[max(0.75rem,env(safe-area-inset-top))] sm:px-6 md:px-10"
         data-nav-tone={navTone}
       >
-        <div className="pointer-events-auto mx-auto grid w-full max-w-6xl grid-cols-[auto_1fr_auto] items-center gap-2 sm:gap-4">
+        <div className="pointer-events-auto mx-auto grid w-full max-w-6xl grid-cols-[auto_1fr_auto] items-center gap-1.5 sm:gap-4">
           <div className="flex justify-start">
             <a
               href="#top"
@@ -162,18 +162,20 @@ export function Navbar() {
             </nav>
           </div>
 
-          <div className="flex items-center justify-end gap-1.5 sm:gap-2">
-            <LangToggle locale={locale} setLocale={setLocale} />
+          <div className="flex shrink-0 items-center justify-end gap-1 sm:gap-2">
+            <div className="hidden sm:block">
+              <LangToggle locale={locale} setLocale={setLocale} />
+            </div>
             <ThemeToggle theme={theme} toggleTheme={toggleTheme} />
 
             <a
               href="#reservation"
               onClick={(e) => handleNavigate(e, "#reservation")}
-              className="btn-nav-primary hidden items-center gap-1 whitespace-nowrap rounded-full px-3 py-2 text-xs font-medium transition-transform duration-200 active:scale-95 sm:flex sm:gap-1.5 sm:px-4 sm:py-2.5 sm:text-sm md:px-5"
+              className="btn-nav-primary hidden items-center gap-1 whitespace-nowrap rounded-full px-3 py-2 text-xs font-medium transition-transform duration-200 active:scale-95 lg:flex lg:gap-1.5 lg:px-4 lg:py-2.5 lg:text-sm"
             >
-              <span className="hidden md:inline">{t.cta.primary}</span>
-              <span className="md:hidden">{t.cta.primaryShort}</span>
-              <ArrowUpRight className="h-3.5 w-3.5 sm:h-4 sm:w-4" aria-hidden />
+              <span className="hidden xl:inline">{t.cta.primary}</span>
+              <span className="xl:hidden">{t.cta.primaryShort}</span>
+              <ArrowUpRight className="h-3.5 w-3.5 lg:h-4 lg:w-4" aria-hidden />
             </a>
 
             <button
@@ -219,7 +221,7 @@ export function Navbar() {
         aria-label={t.a11y.mobileNav}
         aria-hidden={!menuOpen}
         data-nav-tone="on-light"
-        className={`fixed bottom-0 right-0 top-0 z-[46] w-[min(88vw,20rem)] max-w-sm bg-theme-section shadow-2xl transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] md:hidden ${
+        className={`fixed bottom-0 right-0 top-0 z-[46] w-[min(100vw-3rem,20rem)] max-w-sm bg-theme-section shadow-2xl transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] md:hidden ${
           menuOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >
@@ -235,7 +237,7 @@ export function Navbar() {
                 ref={i === 0 ? firstMenuLinkRef : undefined}
                 href={link.href}
                 onClick={(e) => handleNavigate(e, link.href)}
-                className={`border-b border-theme py-4 text-2xl font-semibold transition-all duration-500 ${
+                className={`break-words border-b border-theme py-3.5 text-xl font-semibold transition-all duration-500 sm:py-4 sm:text-2xl ${
                   activeHref === link.href ? "text-theme-strong" : "text-theme-body"
                 } ${menuOpen ? "translate-x-0 opacity-100" : "translate-x-8 opacity-0"}`}
                 style={{ transitionDelay: menuOpen ? `${150 + i * 70}ms` : "0ms" }}

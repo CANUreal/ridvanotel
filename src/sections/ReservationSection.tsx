@@ -41,12 +41,12 @@ export function ReservationSection() {
     <section
       id="reservation"
       data-surface="light"
-      className="bg-theme-section-alt px-4 py-20 sm:px-6 md:py-28 lg:px-8"
+      className="section-pad overflow-hidden bg-theme-section-alt py-16 sm:py-20 md:py-28"
     >
       <div className="mx-auto max-w-2xl">
         <SectionHeading title={t.reservation.title} subtitle={t.reservation.subtitle} />
 
-        <form data-reservation-form onSubmit={onSubmit} className="card-editorial space-y-5 p-6 sm:p-8">
+        <form data-reservation-form onSubmit={onSubmit} className="card-editorial space-y-5 p-5 sm:p-8">
           <div className="grid gap-5 sm:grid-cols-2">
             <label className="block sm:col-span-2">
               <span className="mb-1.5 block text-xs font-bold uppercase tracking-wider text-theme-strong">

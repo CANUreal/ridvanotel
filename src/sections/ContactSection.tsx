@@ -9,11 +9,11 @@ export function ContactSection() {
     <footer
       id="contact"
       data-surface="dark"
-      className="bg-theme-footer px-4 py-16 sm:px-6 md:py-20 lg:px-8"
+      className="section-pad overflow-hidden bg-theme-footer py-14 sm:py-16 md:py-20"
     >
       <div className="mx-auto max-w-4xl">
         <div className="mb-12 text-center" data-animate="title">
-          <h2 className="text-3xl font-black uppercase tracking-tight text-on-surface-heading sm:text-4xl">
+          <h2 className="text-2xl font-black uppercase tracking-tight text-on-surface-heading sm:text-3xl md:text-4xl">
             {t.contact.title}
           </h2>
           <div className="mx-auto mt-4 h-1.5 w-24 rounded-full bg-white/80" aria-hidden />

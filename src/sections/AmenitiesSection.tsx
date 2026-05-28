@@ -8,7 +8,7 @@ export function AmenitiesSection() {
     <section
       id="amenities"
       data-surface="light"
-      className="bg-theme-section-alt px-4 py-20 sm:px-6 md:py-28 lg:px-8"
+      className="section-pad overflow-hidden bg-theme-section-alt py-16 sm:py-20 md:py-28"
     >
       <div className="mx-auto max-w-4xl">
         <SectionHeading title={t.amenities.title} />
@@ -17,7 +17,7 @@ export function AmenitiesSection() {
             <li
               key={service.number}
               data-animate="amenity"
-              className="card-editorial flex flex-col gap-4 p-6 sm:flex-row sm:items-start sm:gap-8 sm:p-8"
+              className="card-editorial flex min-w-0 flex-col gap-4 p-5 sm:flex-row sm:items-start sm:gap-8 sm:p-8"
             >
               <span className="shrink-0 font-brand text-4xl text-theme-accent sm:text-5xl">
                 {service.number}

@@ -10,7 +10,7 @@ export function RoomsSection() {
     <section
       id="suites"
       data-surface="light"
-      className="bg-theme-section px-4 py-20 sm:px-6 md:py-28 lg:px-8"
+      className="section-pad overflow-hidden bg-theme-section py-16 sm:py-20 md:py-28"
     >
       <div className="mx-auto max-w-6xl">
         <SectionHeading title={t.rooms.title} subtitle={t.rooms.subtitle} />
@@ -32,14 +32,14 @@ export function RoomsSection() {
                     className="h-full w-full object-cover transition-transform duration-700 hover:scale-105"
                   />
                 </div>
-                <div className="p-6 sm:p-8">
-                  <div className="mb-3 flex items-start justify-between gap-4">
+                <div className="p-5 sm:p-8">
+                  <div className="mb-3 flex flex-col gap-1 sm:flex-row sm:items-start sm:justify-between sm:gap-4">
                     <span className="font-brand text-3xl text-theme-muted">{room.number}</span>
-                    <span className="text-xs font-bold uppercase tracking-widest text-theme-accent">
+                    <span className="text-xs font-bold uppercase tracking-widest text-theme-accent sm:text-right">
                       {room.category}
                     </span>
                   </div>
-                  <h3 className="text-2xl font-bold text-theme-strong">{room.name}</h3>
+                  <h3 className="text-xl font-bold text-theme-strong sm:text-2xl">{room.name}</h3>
                   <p className="mt-3 text-sm leading-relaxed text-theme-body">{room.description}</p>
                   <ul className="mt-4 flex flex-wrap gap-2">
                     {room.features.map((f) => (

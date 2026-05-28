@@ -8,7 +8,6 @@ function prefersReducedMotion() {
   return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 }
 
-/** Scroll ile görünür olunca bir kez oynat */
 function reveal(
   targets: gsap.TweenTarget,
   vars: gsap.TweenVars,
@@ -70,8 +69,8 @@ export function useScrollAnimations() {
         delay: 0.6,
       });
 
-      /* ── Hero: parallax (scroll-driven) ── */
-      mm.add("(min-width: 0px)", () => {
+      /* Hero parallax — sadece tablet+ (mobilde taşma/jank önlenir) */
+      mm.add("(min-width: 768px)", () => {
         gsap.to(".hero-bg-wrap", {
           scrollTrigger: {
             trigger: "#top",
@@ -98,7 +97,6 @@ export function useScrollAnimations() {
         });
       });
 
-      /* ── Bölüm başlıkları & reveal ── */
       gsap.utils.toArray<HTMLElement>("[data-animate='title']").forEach((el) => {
         reveal(el, { autoAlpha: 0, y: 48, duration: 0.9, ease: "power3.out" }, el);
       });
@@ -115,49 +113,62 @@ export function useScrollAnimations() {
         reveal(el, { autoAlpha: 0, y: 40, duration: 0.85, ease: "power3.out" }, el, "top 88%");
       });
 
-      /* ── Olanaklar ── */
-      gsap.utils.toArray<HTMLElement>("[data-animate='amenity']").forEach((el, i) => {
-        reveal(
-          el,
-          {
-            autoAlpha: 0,
-            x: i % 2 === 0 ? -36 : 36,
-            duration: 0.85,
-            ease: "power2.out",
-          },
-          el,
-          "top 90%"
-        );
-      });
-
-      /* ── Odalar ── */
-      gsap.utils.toArray<HTMLElement>("[data-animate='room-card']").forEach((el, i) => {
-        reveal(
-          el,
-          {
-            autoAlpha: 0,
-            x: i % 2 === 0 ? -48 : 48,
-            y: 32,
-            duration: 1,
-            ease: "power3.out",
-          },
-          el
-        );
-      });
-
-      /* ── Galeri: mobil — kart reveal ── */
+      /* Olanaklar — mobil: dikey, masaüstü: yatay kayma */
       mm.add("(max-width: 767px)", () => {
-        gsap.utils.toArray<HTMLElement>("[data-animate='gallery-item']").forEach((el) => {
+        gsap.utils.toArray<HTMLElement>("[data-animate='amenity']").forEach((el) => {
+          reveal(el, { autoAlpha: 0, y: 24, duration: 0.85, ease: "power2.out" }, el, "top 92%");
+        });
+      });
+
+      mm.add("(min-width: 768px)", () => {
+        gsap.utils.toArray<HTMLElement>("[data-animate='amenity']").forEach((el, i) => {
           reveal(
             el,
-            { autoAlpha: 0, scale: 0.94, y: 20, duration: 0.7, ease: "power2.out" },
+            {
+              autoAlpha: 0,
+              x: i % 2 === 0 ? -36 : 36,
+              duration: 0.85,
+              ease: "power2.out",
+            },
             el,
-            "top 92%"
+            "top 90%"
           );
         });
       });
 
-      /* ── Galeri: masaüstü — scroll-driven yatay ── */
+      mm.add("(max-width: 767px)", () => {
+        gsap.utils.toArray<HTMLElement>("[data-animate='room-card']").forEach((el) => {
+          reveal(el, { autoAlpha: 0, y: 28, duration: 0.9, ease: "power3.out" }, el, "top 92%");
+        });
+      });
+
+      mm.add("(min-width: 768px)", () => {
+        gsap.utils.toArray<HTMLElement>("[data-animate='room-card']").forEach((el, i) => {
+          reveal(
+            el,
+            {
+              autoAlpha: 0,
+              x: i % 2 === 0 ? -48 : 48,
+              y: 32,
+              duration: 1,
+              ease: "power3.out",
+            },
+            el
+          );
+        });
+      });
+
+      mm.add("(max-width: 767px)", () => {
+        gsap.utils.toArray<HTMLElement>("[data-animate='gallery-item']").forEach((el) => {
+          reveal(
+            el,
+            { autoAlpha: 0, scale: 0.96, y: 16, duration: 0.65, ease: "power2.out" },
+            el,
+            "top 95%"
+          );
+        });
+      });
+
       mm.add("(min-width: 768px)", () => {
         const track = document.querySelector<HTMLElement>("[data-gallery-track]");
         if (!track) return;
@@ -179,7 +190,6 @@ export function useScrollAnimations() {
         });
       });
 
-      /* ── Rezervasyon ── */
       const form = document.querySelector("[data-reservation-form]");
       if (form) {
         reveal(
@@ -190,7 +200,6 @@ export function useScrollAnimations() {
         );
       }
 
-      /* ── İletişim ── */
       reveal(
         "[data-animate='contact-col']",
         { autoAlpha: 0, y: 28, stagger: 0.12, duration: 0.8, ease: "power3.out" },
