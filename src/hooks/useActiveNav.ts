@@ -5,8 +5,10 @@ const NAV_OFFSET = 96;
 export function useActiveNav(hrefs: readonly string[]) {
   const [active, setActive] = useState(hrefs[0] ?? "#top");
 
+  const serializedHrefs = hrefs.join(",");
+
   useEffect(() => {
-    const ids = hrefs.map((h) => (h.startsWith("#") ? h.slice(1) : h));
+    const ids = serializedHrefs.split(",").map((h) => (h.startsWith("#") ? h.slice(1) : h));
     const sections = ids
       .map((id) => document.getElementById(id))
       .filter((el): el is HTMLElement => el !== null);
@@ -54,7 +56,7 @@ export function useActiveNav(hrefs: readonly string[]) {
       window.removeEventListener("resize", pick);
       observer.disconnect();
     };
-  }, [hrefs]);
+  }, [serializedHrefs]);
 
   return active;
 }

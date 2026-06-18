@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Navbar } from "./components/Navbar";
 import { useApp } from "./context/AppContext";
 import { useScrollAnimations } from "./hooks/useScrollAnimations";
@@ -9,10 +10,27 @@ import { RoomsSection } from "./sections/RoomsSection";
 import { GallerySection } from "./sections/GallerySection";
 import { ReservationSection } from "./sections/ReservationSection";
 import { ContactSection } from "./sections/ContactSection";
+import { smoothScrollToHash } from "./utils/smoothScroll";
 
 export default function App() {
   const { t, localeSwitching } = useApp();
   useScrollAnimations();
+
+  useEffect(() => {
+    const handleGlobalClick = (e: MouseEvent) => {
+      if (e.defaultPrevented) return;
+      const target = e.target as HTMLElement;
+      const anchor = target.closest("a");
+      if (!anchor) return;
+      const href = anchor.getAttribute("href");
+      if (href && href.startsWith("#") && href.length > 1) {
+        e.preventDefault();
+        smoothScrollToHash(href);
+      }
+    };
+    document.addEventListener("click", handleGlobalClick);
+    return () => document.removeEventListener("click", handleGlobalClick);
+  }, []);
 
   return (
     <div className="min-h-full bg-theme-page transition-colors duration-300">

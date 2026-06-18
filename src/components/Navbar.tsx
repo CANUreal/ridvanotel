@@ -80,7 +80,7 @@ export function Navbar() {
   const menuButtonRef = useRef<HTMLButtonElement>(null);
   const firstMenuLinkRef = useRef<HTMLAnchorElement>(null);
 
-  const { navRef, setLinkRef, indicator } = useNavIndicator(activeHref, [locale, t.nav]);
+  const { navRef, setLinkRef, indicator } = useNavIndicator(activeHref, [locale]);
 
   useEffect(() => {
     document.body.style.overflow = menuOpen ? "hidden" : "";
@@ -109,6 +109,7 @@ export function Navbar() {
     (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
       if (href.startsWith("#")) {
         e.preventDefault();
+        document.body.style.overflow = "";
         smoothScrollToHash(href);
       }
       setMenuOpen(false);

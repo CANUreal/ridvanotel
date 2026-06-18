@@ -21,7 +21,13 @@ export function ReservationSection() {
   const [submitted, setSubmitted] = useState(false);
 
   const update = (field: keyof typeof initial, value: string) => {
-    setForm((prev) => ({ ...prev, [field]: value }));
+    setForm((prev) => {
+      const next = { ...prev, [field]: value };
+      if (field === "checkIn" && prev.checkOut && value > prev.checkOut) {
+        next.checkOut = "";
+      }
+      return next;
+    });
   };
 
   const onSubmit = (e: FormEvent) => {

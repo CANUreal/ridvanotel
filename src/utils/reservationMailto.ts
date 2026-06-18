@@ -58,5 +58,5 @@ export function buildReservationMailto(
     body: lines.join("\n"),
   });
 
-  return `mailto:${to}?${params.toString()}`;
+  return `mailto:${to}?${params.toString().replace(/\+/g, "%20")}`;
 }

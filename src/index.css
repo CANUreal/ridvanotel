@@ -98,7 +98,6 @@ header[data-nav-tone="on-dark"] {
 
 html {
   color-scheme: light;
-  scroll-behavior: smooth;
 }
 
 html[data-theme="dark"] {
@@ -108,7 +107,7 @@ html[data-theme="dark"] {
 html,
 body,
 #root {
-  height: 100%;
+  min-height: 100%;
   margin: 0;
   font-family: "Space Grotesk", system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
