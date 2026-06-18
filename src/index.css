@@ -25,6 +25,14 @@
   --section-rule-bg: #18181b;
   --glass-bg: rgba(255, 255, 255, 0.55);
   --glass-inset: inset 0 1px 1px rgba(255, 255, 255, 0.35);
+
+  /* Global light theme foreground text variables */
+  --tone-heading: #09090b;
+  --tone-accent: #3f3f46;
+  --tone-body: #3f3f46;
+  --tone-strong: #09090b;
+  --tone-muted: #71717a;
+  --tone-cta: #18181b;
 }
 
 [data-theme="dark"] {
@@ -42,6 +50,14 @@
   --section-rule-bg: #fafafa;
   --glass-bg: rgba(24, 24, 27, 0.72);
   --glass-inset: inset 0 1px 1px rgba(255, 255, 255, 0.08);
+
+  /* Global dark theme foreground text variables */
+  --tone-heading: #fafafa;
+  --tone-accent: #d4d4d8;
+  --tone-body: #e4e4e7;
+  --tone-strong: #ffffff;
+  --tone-muted: #a1a1aa;
+  --tone-cta: #fafafa;
 }
 
 [data-surface="light"] {
@@ -72,7 +88,7 @@
 }
 
 /* ── Navbar tonu (scroll / hero) ── */
-header[data-nav-tone="on-light"] {
+[data-nav-tone="on-light"] {
   --nav-text: #18181b;
   --nav-text-muted: rgba(24, 24, 27, 0.78);
   --nav-glass: rgba(255, 255, 255, 0.78);
@@ -80,7 +96,7 @@ header[data-nav-tone="on-light"] {
   --nav-btn-fg: #ffffff;
 }
 
-header[data-nav-tone="on-dark"] {
+[data-nav-tone="on-dark"] {
   --nav-text: #ffffff;
   --nav-text-muted: rgba(255, 255, 255, 0.82);
   --nav-glass: rgba(9, 9, 11, 0.45);
@@ -88,7 +104,7 @@ header[data-nav-tone="on-dark"] {
   --nav-btn-fg: #18181b;
 }
 
-[data-theme="dark"] header[data-nav-tone="on-light"] {
+[data-theme="dark"] [data-nav-tone="on-light"] {
   --nav-glass: rgba(24, 24, 27, 0.9);
   --nav-text: #fafafa;
   --nav-text-muted: rgba(250, 250, 250, 0.78);
@@ -395,7 +411,7 @@ header .liquid-glass {
   pointer-events: none;
 }
 
-header[data-nav-tone="on-dark"] .liquid-glass::before,
+[data-nav-tone="on-dark"] .liquid-glass::before,
 [data-surface="dark"] .liquid-glass::before {
   background: linear-gradient(
     180deg,
@@ -437,7 +453,7 @@ header[data-nav-tone="on-dark"] .liquid-glass::before,
   pointer-events: none;
 }
 
-header[data-nav-tone="on-dark"] .nav-pill-indicator {
+[data-nav-tone="on-dark"] .nav-pill-indicator {
   opacity: 0.22;
   background: #ffffff;
 }

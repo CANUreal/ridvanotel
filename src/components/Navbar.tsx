@@ -222,6 +222,7 @@ export function Navbar() {
         aria-label={t.a11y.mobileNav}
         aria-hidden={!menuOpen}
         data-nav-tone="on-light"
+        data-surface="light"
         className={`fixed bottom-0 right-0 top-0 z-[46] w-[min(100vw-3rem,20rem)] max-w-sm bg-theme-section shadow-2xl transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] md:hidden ${
           menuOpen ? "translate-x-0" : "translate-x-full"
         }`}
