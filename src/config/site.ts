@@ -1,6 +1,6 @@
 export const SITE = {
   brand: {
-    website: "https://ridvanotel.com",
+    website: "https://ridvanotel2.vercel.app",
   },
   contact: {
     address: "Cumhuriyet Meydanı No:11, 35930 Çeşme / İzmir",
@@ -11,7 +11,7 @@ export const SITE = {
     license: "Kültür ve Turizm Bakanlığı — Tesis İzin Belge No: 2416",
   },
   cta: {
-    roomsUrl: "https://ridvanotel.com/index.php/odalarimiz",
+    roomsUrl: "https://ridvanotel2.vercel.app/#suites",
     mailto: "mailto:info@ridvanotel.com?subject=Rezervasyon%20Talebi",
   },
 } as const;
