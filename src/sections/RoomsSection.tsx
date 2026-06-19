@@ -1,4 +1,4 @@
-import { ArrowRight, ExternalLink } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { SectionHeading } from "../components/SectionHeading";
 import { ROOM_IMAGES } from "../data/rooms";
 import { useApp } from "../context/AppContext";
@@ -55,15 +55,6 @@ export function RoomsSection() {
                     <a href="#reservation" className="btn-dark inline-flex w-full justify-center text-sm sm:w-auto">
                       {t.cta.primaryShort}
                       <ArrowRight className="h-4 w-4" />
-                    </a>
-                    <a
-                      href={meta.detailUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-theme px-5 py-2.5 text-sm font-semibold text-theme-strong transition-colors hover:bg-theme-chip sm:w-auto"
-                    >
-                      {t.cta.roomDetail}
-                      <ExternalLink className="h-4 w-4" />
                     </a>
                   </div>
                 </div>
