@@ -1,3 +1,8 @@
+import gsap from "gsap";
+import { ScrollToPlugin } from "gsap/ScrollToPlugin";
+
+gsap.registerPlugin(ScrollToPlugin);
+
 const NAV_OFFSET = 96;
 
 export function smoothScrollToHash(hash: string) {
@@ -5,11 +10,11 @@ export function smoothScrollToHash(hash: string) {
   const target = document.getElementById(id);
   if (!target) return;
 
-  const top = target.getBoundingClientRect().top + window.scrollY - NAV_OFFSET;
-
-  window.scrollTo({
-    top: Math.max(0, top),
-    behavior: "smooth",
+  gsap.to(window, {
+    duration: 0.8,
+    scrollTo: { y: target, offsetY: NAV_OFFSET },
+    ease: "power3.inOut",
+    overwrite: true,
   });
 
   history.pushState(null, "", `#${id}`);

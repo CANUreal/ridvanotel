@@ -39,4 +39,4 @@ npm run preview
 - **Build command:** `npm run build`
 - **Output directory:** `dist`
 
-Suggested staging URL: `ridvanotel2.vercel.app` (project name `ridvanotel2` on Vercel).
+Suggested staging URL: `ridvanotel.com`
