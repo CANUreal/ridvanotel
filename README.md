@@ -44,4 +44,4 @@ Suggested staging URL: `ridvanotel2.vercel.app` (project name `ridvanotel2` on V
 
 Update!!! 
   It is coming to ridvanotel.com in like uhhh next week?
-  As soon as the customer sends the hosting info.
+  As soon as the customer sends the hosting info
