@@ -1,6 +1,6 @@
 # Ridvan Otel — Çeşme
 
-Modern landing page for [Ridvan Hotel](https://ridvanotel.com). Vite + React, TR/EN, dark mode, gallery, testimonials, and mailto reservation form.
+Modern landing page for [Ridvan Hotel](https://ridvanotel.com). Vite + React, TR/EN, dark mode, gallery, testimonials, and rezervasyonel.com reservation form.
 
 ## Run locally
 
