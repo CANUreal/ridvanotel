@@ -41,4 +41,4 @@ npm run preview
 
 Suggested staging URL: `ridvanotel.com` (project name `ridvanotel.com` on Vercel).
 
-14 July: Added room types. 
+14 July: Added room types. Did not push. (for now) 
