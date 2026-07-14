@@ -40,3 +40,5 @@ npm run preview
 - **Output directory:** `dist`
 
 Suggested staging URL: `ridvanotel.com` (project name `ridvanotel.com` on Vercel).
+
+14 July: Added room types. 
