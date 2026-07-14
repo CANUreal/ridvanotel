@@ -2,18 +2,20 @@ import { useState } from "react";
 import { ZoomIn } from "lucide-react";
 import { ImageLightbox } from "../components/ImageLightbox";
 import { SectionHeading } from "../components/SectionHeading";
-import { GALLERY_IMAGES } from "../data/gallery";
+import { GALLERY_IMAGES, GalleryItem } from "../data/gallery";
 import { useApp } from "../context/AppContext";
 
 function GalleryTile({
-  src,
+  item,
+  index,
   className,
   onOpen,
   alt,
   openLabel,
   animate = false,
 }: {
-  src: string;
+  item: GalleryItem;
+  index: number;
   className: string;
   onOpen: () => void;
   alt: string;
@@ -29,7 +31,7 @@ function GalleryTile({
       aria-label={openLabel}
     >
       <img
-        src={src}
+        src={item.src}
         alt={alt}
         width={640}
         height={480}
@@ -42,6 +44,11 @@ function GalleryTile({
           <ZoomIn className="h-5 w-5" />
         </span>
       </span>
+      {item.tag && (
+        <span className="pointer-events-none absolute bottom-2.5 left-2.5 rounded-full bg-black/55 px-2.5 py-0.5 text-[11px] font-semibold tracking-wide text-white/95 backdrop-blur-sm">
+          {item.tag}
+        </span>
+      )}
     </button>
   );
 }
@@ -49,6 +56,8 @@ function GalleryTile({
 export function GallerySection() {
   const { t } = useApp();
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+
+  const srcs = GALLERY_IMAGES.map((item) => item.src);
 
   return (
     <section
@@ -66,10 +75,11 @@ export function GallerySection() {
           className="gallery-scroll flex w-max snap-x snap-mandatory gap-3 px-4 pb-3 pt-1 sm:gap-4 sm:px-6 md:gap-4 md:overflow-visible md:px-10 md:pb-4 md:snap-none md:pt-0"
           aria-label={t.gallery.scrollHint}
         >
-          {GALLERY_IMAGES.map((src, i) => (
+          {GALLERY_IMAGES.map((item, i) => (
             <GalleryTile
-              key={src}
-              src={src}
+              key={item.src}
+              item={item}
+              index={i}
               animate
               className={`h-56 w-[82vw] max-w-[300px] sm:h-72 sm:w-[72vw] sm:max-w-[360px] md:h-[min(72vh,520px)] ${
                 i === 0 ? "md:w-[min(85vw,720px)]" : "md:w-[min(42vw,380px)]"
@@ -85,7 +95,7 @@ export function GallerySection() {
       <p className="gallery-hint mt-4 text-center text-sm md:mt-6">{t.gallery.scrollHint}</p>
 
       <ImageLightbox
-        images={GALLERY_IMAGES}
+        images={srcs}
         index={lightboxIndex}
         altForIndex={(n) => t.gallery.imageAlt(n)}
         onClose={() => setLightboxIndex(null)}
