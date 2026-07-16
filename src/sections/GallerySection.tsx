@@ -7,7 +7,6 @@ import { useApp } from "../context/AppContext";
 
 function GalleryTile({
   item,
-  index,
   className,
   onOpen,
   alt,
@@ -15,7 +14,6 @@ function GalleryTile({
   animate = false,
 }: {
   item: GalleryItem;
-  index: number;
   className: string;
   onOpen: () => void;
   alt: string;
@@ -79,7 +77,6 @@ export function GallerySection() {
             <GalleryTile
               key={item.src}
               item={item}
-              index={i}
               animate
               className={`h-56 w-[82vw] max-w-[300px] sm:h-72 sm:w-[72vw] sm:max-w-[360px] md:h-[min(72vh,520px)] ${
                 i === 0 ? "md:w-[min(85vw,720px)]" : "md:w-[min(42vw,380px)]"
