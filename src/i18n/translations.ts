@@ -93,6 +93,17 @@ export const translations = {
         description:
           "Oda servisi, emanet kasası ve asansör. Belboy, danışma, ücretli ütü, telefon ve faks hizmetleri.",
       },
+      {
+        number: "05",
+        name: "Transfer Servisi",
+        description:
+          "Havalimanına 90km. İstek üzerine ücretli transfer servisi.\nGiriş 14.00, çıkış 12.00",
+      },
+      {
+        number: "06",
+        name: "Otopark",
+        description: "Otoparkımız mevcut değildir.",
+      },
     ],
     rooms: {
       title: "Odalar",
@@ -263,6 +274,17 @@ export const translations = {
         name: "Room Service & Elevator",
         description:
           "Room service, safe deposit box, and elevator. Bellboy, concierge, paid ironing, phone, and fax services.",
+      },
+      {
+        number: "05",
+        name: "Transfer Service",
+        description:
+          "90km to the airport. Paid transfer service available on request.\nCheck-in 14:00, check-out 12:00",
+      },
+      {
+        number: "06",
+        name: "Parking",
+        description: "On-site parking is not available.",
       },
     ],
     rooms: {

@@ -24,7 +24,7 @@ export function AmenitiesSection() {
               </span>
               <div>
                 <h3 className="text-xl font-bold text-theme-strong">{service.name}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-theme-body sm:text-base">
+                <p className="mt-2 whitespace-pre-line text-sm leading-relaxed text-theme-body sm:text-base">
                   {service.description}
                 </p>
               </div>

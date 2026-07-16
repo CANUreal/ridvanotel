@@ -12,7 +12,7 @@ export function ReservationSection() {
       className="section-pad overflow-hidden bg-theme-section-alt py-16 sm:py-20 md:py-28"
     >
       <div className="mx-auto max-w-2xl text-center">
-        <SectionHeading title={t.reservation.title} subtitle={t.reservation.subtitle} />
+        <SectionHeading title={t.reservation.title} />
         <div className="mt-10">
           <a
             href="https://ridvan.rezervasyonal.com/"
